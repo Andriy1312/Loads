@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Loads</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_main_loads">MainLoadsActivity</string>
+    <string name="title_section1">Disk</string>
+    <string name="title_section2">Loads</string>
+
+    <string name="file_list_text_item">File Item</string>
+    <string name="edit_text_hint">Input URL</string>
+    <string name="image_content">description</string>
+    <string name="cancel_but">Cancel</string>
+</resources>

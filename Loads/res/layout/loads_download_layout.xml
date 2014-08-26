@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/main_load_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp" >
+
+        <EditText
+            android:id="@+id/input_text_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="@string/edit_text_hint"
+            android:inputType="textUri" />
+
+        <ImageButton
+            android:id="@+id/loads_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/input_text_field"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_launcher"
+            android:contentDescription="@string/image_content"
+            android:onClick="loadClick" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/progress_layout" 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <ProgressBar 
+            android:id="@+id/progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            style="@android:style/Widget.ProgressBar.Horizontal" />
+
+       <Button
+            android:id="@+id/cancel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/progress_bar"
+            android:layout_centerHorizontal="true"
+            android:text="@string/cancel_but"
+            android:onClick="onCancel" />
+    </RelativeLayout>"
+</FrameLayout>
