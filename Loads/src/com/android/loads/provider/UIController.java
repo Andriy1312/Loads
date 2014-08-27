@@ -36,15 +36,36 @@ public class UIController implements ActionBar.TabListener, IUiController, OnLoa
     private ListView listView;
     private int fileIdForDeletion = -1;
     private IDownloadController downloadController;
+    private String currentFolderPath = null;
 
     public UIController(Activity activity) {
         mCurrentActivity = activity;
+    }
+
+    public void initializeFileBrowser(String url) {
+
+    }
+
+    public String getCurrentFolderPath() {
+        if(dataManager != null)
+            return dataManager.getCurrentRootPath();
+        else return null;
+    }
+
+    public void setCurrentFolderPath(String url) {
+        currentFolderPath = url;
     }
 
     public void setActivityUI(FragmentManager fragmentManager, FileStoreSectionFragment.OnFileStoreListener listener) {
 /**Tabs adding*/
         final ActionBar actionBar = mCurrentActivity.getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+/**Data Manager Initialization*/
+        dataManager = new LoadsDataManager(Environment.getExternalStorageDirectory());
+        dataManager.setOnLoadDataListener(this);
+        if(currentFolderPath != null)
+            dataManager.setCurrentRootFile(currentFolderPath);
 
 /**Fragment adapter initialization*/
         fileStoreFragment = new FileStoreSectionFragment();
@@ -54,10 +75,6 @@ public class UIController implements ActionBar.TabListener, IUiController, OnLoa
         fragmentsList.add((Fragment)fileStoreFragment);
         fragmentsList.add((Fragment)loadsFragment);
         mSectionsAdapter = new PagerSactionsAdapter(fragmentManager, mCurrentActivity, fragmentsList);
-
-/**Setup files data*/
-        dataManager = new LoadsDataManager(Environment.getExternalStorageDirectory());
-        dataManager.setOnLoadDataListener(this);
         mSectionsAdapter.setFilesArray(getFileNamesList());
 
 /**View Pager Initialization*/

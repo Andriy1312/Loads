@@ -109,4 +109,8 @@ public class LoadsDataManager {
             return currentDownloadFolder;
         return DEFAULT_DOWNLOAD_PATH;
     }
+
+    public void setCurrentRootFile(String url) {
+        currentRootFile = new File(url);
+    }
 }

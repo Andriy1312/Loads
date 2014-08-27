@@ -11,12 +11,17 @@ import android.view.View;
 public class MainLoadsActivity extends FragmentActivity implements FileStoreSectionFragment.OnFileStoreListener {
 
     private IUiController uiController;
+    private String currentFolder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_loads);
         uiController = new UIController(this);
+        if(savedInstanceState != null) {
+            currentFolder = savedInstanceState.getString("pathFolder");
+            uiController.setCurrentFolderPath(currentFolder);
+        }
         uiController.setActivityUI(getSupportFragmentManager(),this);
     }
 
@@ -33,6 +38,12 @@ public class MainLoadsActivity extends FragmentActivity implements FileStoreSect
         }
         else
             return super.onContextItemSelected(item);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("pathFolder", uiController.getCurrentFolderPath());
     }
 
     @Override

@@ -1,6 +1,8 @@
 package com.android.loads.ui;
 
 import java.util.ArrayList;
+
+import com.android.loads.MainLoadsActivity;
 import com.android.loads.R;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -38,8 +40,9 @@ public class FileStoreSectionFragment extends Fragment {
                 filesArray = savedInstanceState.getStringArrayList("string_key");
             if(filesArray != null) {
                 fileList.setAdapter(new ArrayAdapter<String>(rootView.getContext(), R.layout.file_list_item,filesArray));
+                if(fileStoreListener == null)
+                    setOnFileStoreListener((MainLoadsActivity)getActivity());
                 fileList.setOnItemClickListener(new OnItemClickListener() {
-                
                 @Override
                 public void onItemClick(AdapterView<?> arg0, View view,
                             int position, long id) {

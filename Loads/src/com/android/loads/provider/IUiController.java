@@ -1,7 +1,6 @@
 package com.android.loads.provider;
 
 import com.android.loads.ui.FileStoreSectionFragment;
-
 import android.support.v4.app.FragmentManager;
 
 public interface IUiController {
@@ -17,4 +16,8 @@ public interface IUiController {
     void startDownloading();
 
     void stopDownloading();
+
+    void setCurrentFolderPath(String url);
+
+    String getCurrentFolderPath();
 }
